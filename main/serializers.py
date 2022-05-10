@@ -25,9 +25,9 @@ class RegistrationSerializer(serializers.ModelSerializer):
         fields = ('username', 'email', 'first_name', 'last_name', 'password', 'password2')
 
     def validate(self, attrs):
-        password2 = attrs.pop('password2')
+        password2 = attrs['password2']
         print(password2)
-        if not password2 == attrs.pop('password'):
+        if not password2 == attrs['password']:
             raise serializers.ValidationError('Passwords did not match')
         return attrs
 
